@@ -27,7 +27,7 @@ public class AzureQueueService {
                 .findFirst()
                 .map(message -> {
                     queueClient.deleteMessage(message.getMessageId(), message.getPopReceipt());
-                    return message.getMessageText();
+                    return message.getBody().toString();
                 }).orElse(null);
     }
 }
